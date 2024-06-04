@@ -1,0 +1,21 @@
+local Players = game:GetService("Players")
+
+-- Lines
+local LineDrawer = require(game.ServerScriptService.LineDrawer)
+
+-- Text
+local TextDrawer = require(game.ServerScriptService.TextDrawer)
+
+-- Function Heartbeat
+game:GetService("RunService").Heartbeat:Connect(function()
+
+    -- Players
+    for _, player in pairs(Players:GetPlayers()) do
+
+        -- Lines player
+        LineDrawer:DrawCircle(player, Vector3.new(), 5, Color3.new(0, 255, 0))
+
+        -- Health
+        TextDrawer:DrawString3D(player.Head, player.Name .. ": " .. player.Health, Vector3.new(0, 3, 0), 1, Color3.new(0, 255, 0))
+    end
+end)
